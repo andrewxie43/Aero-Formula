@@ -19,15 +19,43 @@ public class isa
     Scanner sc = new Scanner(System.in);
     System.out.println("Input variables: if unknown, input 'N/A'. \n");
     System.out.println("Density:");
-    density = sc.nextLine();
+    String dense = sc.nextLine();
     System.out.println("Pressure");
-    pressure = sc.nextLine();
+    String press = sc.nextLine();
     System.out.println("Temperature:");
-    temp = sc.nextLine();
+    String temper = sc.nextLine();
     System.out.println("Altitude:");
-    temp = sc.nextLine();
+    String alti = sc.nextLine();
+
+    if (dense == 'N/A')
+    {
+      pressure = Integer.parseInt(press);
+      temp = Integer.parseInt(temper);
+      alt = Integer.parseInt(alti);
+
+    } else if (press = 'N/A')
+    {
+      density = Integer.parseInt(dense);
+      temp = Integer.parseInt(temper);
+      alt = Integer.parseInt(alti);
+
+    } else if (temper = 'N/A')
+    {
+      density = Integer.parseInt(dense);
+      pressure = Integer.parseInt(press);
+      alt = Integer.parseInt(alti);
+
+    } else if (alti = 'N/A')
+    {
+      pressure = Integer.parseInt(press);
+      density = Integer.parseInt(dense);
+      temp = Integer.parseInt(temper);
+
+    }
   }
 
-  
+
+
+
 
 }
