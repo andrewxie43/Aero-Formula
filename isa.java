@@ -90,10 +90,15 @@ public class isa
   public double findTemp(double alti)
   {
     double gradient;
+    double startTemp;
+    double startAlt;
     double temp;
     if (alti <= troposphereMax) //troposphere
     {
       gradient = troposphereTempChange;
+      startTemp = troposphereTemp;
+      startAlt = troposphereMin;
+      
     }
     else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause
     {
@@ -102,10 +107,14 @@ public class isa
     else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
     {
       gradient = lowStratosphereTempChange;
+      startTemp = lowStratosphereTemp;
+      startAlt = lowStratosphereMin;
     }
     else if (alti > lowStratosphereMax && alti <= highStratosphereMax) //high Strato
     {
       gradient = highStratosphereTempChange;
+      startTemp = highStratosphereTemp;
+      startAlt = highStratosphereMin;
     }
     else if (alti > highStratosphereMax && alti <= stratopauseMax) //stratopause
     {
@@ -115,7 +124,8 @@ public class isa
     {
       System.out.println("Invalid Altitude.");
     }
-
+    
+    temp = startTemp + (gradient * (alti - startAlt);
     return temp;
   }
 
