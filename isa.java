@@ -47,7 +47,7 @@ public class isa
 
 
 
-  public isa()
+  public isa() //Figure out how to input variables in the call
   {
     Scanner sc = new Scanner(System.in);
     System.out.println("Input variables: if unknown, input 'N/A'. \n");
@@ -87,9 +87,36 @@ public class isa
     }
   }
 
-  public static void main(String[] args) //Temporary PSVM
+  public double findTemp(double alti)
   {
+    double gradient;
+    double temp;
+    if (alti <= troposphereMax) //troposphere
+    {
+      gradient = troposphereTempChange;
+    }
+    else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause
+    {
+      gradient = tropopauseTempChange;
+    }
+    else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
+    {
+      gradient = lowStratosphereTempChange;
+    }
+    else if (alti > lowStratosphereMax && alti <= highStratosphereMax) //high Strato
+    {
+      gradient = highStratosphereTempChange;
+    }
+    else if (alti > highStratosphereMax && alti <= stratopauseMax)
+    {
+      gradient = stratopauseTempChange;
+    }
+    else
+    {
+      System.out.println("Invalid Altitude.");
+    }
 
+    return temp;
   }
 
 
