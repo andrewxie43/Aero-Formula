@@ -11,37 +11,37 @@ public class isa
   private int alt;
 
   //Sea level/atmosphere constants
-  private static int seaLevelDensity = 1.225;
+  private static double seaLevelDensity = 1.225;
   private static int seaLevelPressure = 101325;
-  private static int seaLevelTemp = 288.15;
+  private static double seaLevelTemp = 288.15;
   private static int gasConstant = 287;
 
 
   //atmosphere layers
   private static int troposphereMin = 0; //Troposphere
   private static int troposphereMax = 11000;
-  private static int troposphereTemp = 288.15;
-  private static int troposphereTempChange = -0.0065; //in K/m
+  private static double troposphereTemp = 288.15;
+  private static double troposphereTempChange = -0.0065; //in K/m
 
   private static int tropopauseMin = 11000; //Tropopause
   private static int tropopauseMax = 20000;
-  private static int tropopauseTemp = 216.65; //Double Check value
-  private static int tropopauseTempChange = 0;
+  private static double tropopauseTemp = 216.65; //Double Check value
+  private static double tropopauseTempChange = 0;
 
   private static int lowStratosphereMin = 20000; //Lower Stratosphere
   private static int lowStratosphereMax = 32000;
-  private static int lowStratosphereTemp = 216.65; //Double Check value
-  private static int lowStratosphereTempChange = 0.001;
+  private static double lowStratosphereTemp = 216.65; //Double Check value
+  private static double lowStratosphereTempChange = 0.001;
 
   private static int highStratosphereMin = 32000; //Higher Stratosphere
   private static int highStratosphereMax = 47000;
-  private static int highStratosphereTemp = 228.65; //Double Check value
-  private static int highStratosphereTempChange = 0.0028;
+  private static double highStratosphereTemp = 228.65; //Double Check value
+  private static double highStratosphereTempChange = 0.0028;
 
   private static int stratopauseMin = 47000; //Stratopause
   private static int stratopauseMax = 51000;
-  private static int stratopauseTemp = 270.65; //Double Check value
-  private static int stratopauseTempChange = 0;
+  private static double stratopauseTemp = 270.65; //Double Check value
+  private static double stratopauseTempChange = 0;
 
 
 
@@ -60,25 +60,25 @@ public class isa
     System.out.println("Altitude:");
     String alti = sc.nextLine();
 
-    if (dense == 'N/A')
+    if (dense == "N/A")
     {
       pressure = Integer.parseInt(press);
       temp = Integer.parseInt(temper);
       alt = Integer.parseInt(alti);
 
-    } else if (press = 'N/A')
+    } else if (press == "N/A")
     {
       density = Integer.parseInt(dense);
       temp = Integer.parseInt(temper);
       alt = Integer.parseInt(alti);
 
-    } else if (temper = 'N/A')
+    } else if (temper == "N/A")
     {
       density = Integer.parseInt(dense);
       pressure = Integer.parseInt(press);
       alt = Integer.parseInt(alti);
 
-    } else if (alti = 'N/A')
+    } else if (alti == "N/A")
     {
       pressure = Integer.parseInt(press);
       density = Integer.parseInt(dense);
@@ -87,9 +87,10 @@ public class isa
     }
   }
 
+  public static void main(String[] args) //Temporary PSVM
+  {
 
-  public int
-
+  }
 
 
 
