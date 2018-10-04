@@ -97,7 +97,7 @@ public class isa
     }
     else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause
     {
-      gradient = tropopauseTempChange;
+      return tropopauseTemp;
     }
     else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
     {
@@ -107,9 +107,9 @@ public class isa
     {
       gradient = highStratosphereTempChange;
     }
-    else if (alti > highStratosphereMax && alti <= stratopauseMax)
+    else if (alti > highStratosphereMax && alti <= stratopauseMax) //stratopause
     {
-      gradient = stratopauseTempChange;
+      return stratopauseTemp;
     }
     else
     {
