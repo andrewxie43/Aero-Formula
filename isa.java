@@ -90,15 +90,13 @@ public class isa
 
   public static double findTempAlt(double alti)
   {
-    double gradient;
-    double startTemp;
-    double startAlt;
-    double temp;
+    double gradient = troposphereTempChange;
+    double startTemp = troposphereTemp;
+    double startAlt = troposphereMin;
+    double temp = 0;
     if (alti <= troposphereMax) //troposphere
     {
-      gradient = troposphereTempChange;
-      startTemp = troposphereTemp;
-      startAlt = troposphereMin;
+
 
     }
     else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause

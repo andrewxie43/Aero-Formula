@@ -1,0 +1,49 @@
+public class main
+{
+  public static void main(String[] args)
+  {
+    System.out.println(findTempAlt(9144)); //test value of 9144m should return 228.714K
+  }
+
+
+}
+
+public static double findTempAlt(double alti)
+{
+  double gradient = troposphereTempChange;
+  double startTemp = troposphereTemp;
+  double startAlt = troposphereMin;
+  double temp = 0;
+  if (alti <= troposphereMax) //troposphere
+  {
+
+
+  }
+  else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause
+  {
+    return tropopauseTemp;
+  }
+  else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
+  {
+    gradient = lowStratosphereTempChange;
+    startTemp = lowStratosphereTemp;
+    startAlt = lowStratosphereMin;
+  }
+  else if (alti > lowStratosphereMax && alti <= highStratosphereMax) //high Strato
+  {
+    gradient = highStratosphereTempChange;
+    startTemp = highStratosphereTemp;
+    startAlt = highStratosphereMin;
+  }
+  else if (alti > highStratosphereMax && alti <= stratopauseMax) //stratopause
+  {
+    return stratopauseTemp;
+  }
+  else
+  {
+    System.out.println("Invalid Altitude.");
+  }
+
+  temp = startTemp + (gradient * (alti - startAlt));
+  return temp;
+}
