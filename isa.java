@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Math;
 
 public class isa
 {
@@ -96,8 +97,10 @@ public class isa
     double temp = 0;
     if (alti <= troposphereMax) //troposphere
     {
-
-
+      gradient = troposphereTempChange;
+      startTemp = troposphereTemp;
+      startAlt = troposphereMin;
+      temp = 0;
     }
     else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause
     {
@@ -127,7 +130,36 @@ public class isa
     temp = startTemp + (gradient * (alti - startAlt));
     return temp;
   }
+  public double findPressureAlt(double alti)
+  {
+    double temp = findTempAlt(alti);
+    double gravity = 9.8;
+    double gradient = 0;
+    if (alti <= troposphereMax) //troposphere
+    {
+      gradient = troposphereTempChange;
+    }
 
+    else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
+    {
+      gradient = lowStratosphereTempChange;
+    }
+    else if (alti > lowStratosphereMax && alti <= highStratosphereMax) //high Strato
+    {
+      gradient = highStratosphereTempChange;
+    }
+    else if ((alti > troposphereMax && alti <=tropopauseMax) || (alti > highStratosphereMax && alti <= stratopauseMax)) //tropopause and stratopause
+    {
+      gradient = 0;
+    }
+    else
+    {
+      System.out.println("Invalid Altitude.");
+    }
+    double gar = (-gravity)/(gradient*gasConstant)-1;
+    return Math.pow((temp/seaLevelTemp), gar) ;
+
+  }
 
 
 
