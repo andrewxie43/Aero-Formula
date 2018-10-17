@@ -99,6 +99,7 @@ public class isa
     double temp = findTempAlt(alti);
     double gravity = 9.8;
     double gradient = 0;
+    double startAlt = 0;
     if (alti <= troposphereMax) //troposphere
     {
       gradient = troposphereTempChange;
@@ -115,12 +116,12 @@ public class isa
     else if ((alti > troposphereMax && alti <=tropopauseMax)) //tropopause and stratopause
     {
       gradient = 0;
-      double startAlt = tropopauseMin;
+      startAlt = tropopauseMin;
     }
     else if (alti > highStratosphereMax && alti <= stratopauseMax)
     {
       gradient = 0;
-      double startAlt = stratopauseMin;
+      startAlt = stratopauseMin;
     }
     else
     {
@@ -128,12 +129,13 @@ public class isa
     }
     if (gradient != 0)
     {
-      double gar = (-gravity)/(gradient*gasConstant)-1;
-      return Math.pow((temp/seaLevelTemp), gar);
+      double gar = (-gravity) / (gradient * gasConstant) - 1;
+      return Math.pow((temp / seaLevelTemp), gar);
     }
     else
     {
-      double grt
+      double grt = (-gravity/(gasConstant * temp)) * (alti - startAlt);
+      return Math.pow(Math.E, grt);
     }
 
 
