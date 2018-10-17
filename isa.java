@@ -50,46 +50,10 @@ public class isa
 
   public isa() //Figure out how to input variables in the call
   {
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Input variables: if unknown, input 'N/A'. \n");
-    System.out.println("Density:");
-    String dense = sc.nextLine();
-    System.out.println("Pressure");
-    String press = sc.nextLine();
-    System.out.println("Temperature:");
-    String temper = sc.nextLine();
-    System.out.println("Altitude:");
-    String alti = sc.nextLine();
-    sc.close();
 
-    if (dense == "N/A")
-    {
-      pressure = Integer.parseInt(press);
-      temp = Integer.parseInt(temper);
-      alt = Integer.parseInt(alti);
-
-    } else if (press == "N/A")
-    {
-      density = Integer.parseInt(dense);
-      temp = Integer.parseInt(temper);
-      alt = Integer.parseInt(alti);
-
-    } else if (temper == "N/A")
-    {
-      density = Integer.parseInt(dense);
-      pressure = Integer.parseInt(press);
-      alt = Integer.parseInt(alti);
-
-    } else if (alti == "N/A")
-    {
-      pressure = Integer.parseInt(press);
-      density = Integer.parseInt(dense);
-      temp = Integer.parseInt(temper);
-
-    }
   }
 
-  public static double findTempAlt(double alti)
+  public double findTempAlt(double alti)
   {
     double gradient = troposphereTempChange;
     double startTemp = troposphereTemp;
@@ -148,16 +112,31 @@ public class isa
     {
       gradient = highStratosphereTempChange;
     }
-    else if ((alti > troposphereMax && alti <=tropopauseMax) || (alti > highStratosphereMax && alti <= stratopauseMax)) //tropopause and stratopause
+    else if ((alti > troposphereMax && alti <=tropopauseMax)) //tropopause and stratopause
     {
       gradient = 0;
+      double startAlt = tropopauseMin;
+    }
+    else if (alti > highStratosphereMax && alti <= stratopauseMax)
+    {
+      gradient = 0;
+      double startAlt = stratopauseMin;
     }
     else
     {
       System.out.println("Invalid Altitude.");
     }
-    double gar = (-gravity)/(gradient*gasConstant)-1;
-    return Math.pow((temp/seaLevelTemp), gar) ;
+    if (gradient != 0)
+    {
+      double gar = (-gravity)/(gradient*gasConstant)-1;
+      return Math.pow((temp/seaLevelTemp), gar);
+    }
+    else
+    {
+      double grt
+    }
+
+
 
   }
 
