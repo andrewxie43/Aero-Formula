@@ -59,6 +59,7 @@ public class isa
     String temper = sc.nextLine();
     System.out.println("Altitude:");
     String alti = sc.nextLine();
+    sc.close();
 
     if (dense == "N/A")
     {
@@ -87,7 +88,7 @@ public class isa
     }
   }
 
-  public double findTemp(double alti)
+  public static double findTempAlt(double alti)
   {
     double gradient;
     double startTemp;
@@ -98,7 +99,7 @@ public class isa
       gradient = troposphereTempChange;
       startTemp = troposphereTemp;
       startAlt = troposphereMin;
-      
+
     }
     else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause
     {
@@ -124,10 +125,13 @@ public class isa
     {
       System.out.println("Invalid Altitude.");
     }
-    
-    temp = startTemp + (gradient * (alti - startAlt);
+
+    temp = startTemp + (gradient * (alti - startAlt));
     return temp;
   }
+
+
+
 
 
 
