@@ -104,6 +104,7 @@ public class isa
     if (alti <= troposphereMax) //troposphere
     {
       gradient = troposphereTempChange;
+      System.out.println("troposphere");
     }
 
     else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
@@ -128,10 +129,8 @@ public class isa
     {
       System.out.println("Invalid Altitude.");
     }
-    gradient = 1;
     if (gradient != 0)
     {
-      gradient = troposphereTempChange;
       double gar = ((gravity) / (gradient * gasConstant) );//If testing works for 9144, change to use recursion to calculate pressures up to other levels.
       double x = (temp / seaLevelTemp);
       return seaLevelPressure * Math.pow(x, gar);
