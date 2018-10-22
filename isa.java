@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.lang.Math;
 
+
 public class isa
 {
   //density in kg/m^3, pressure in pa, temperature in k, distance in m
@@ -13,34 +14,34 @@ public class isa
 
   //Sea level/atmosphere constants
   private static double seaLevelDensity = 1.225;
-  private static int seaLevelPressure = 101325;
+  private static double seaLevelPressure = 101325;
   private static double seaLevelTemp = 288.15;
-  private static int gasConstant = 287;
+  private static double gasConstant = 287;
 
 
   //atmosphere layers
-  private static int troposphereMin = 0; //Troposphere
-  private static int troposphereMax = 11000;
+  private static double troposphereMin = 0; //Troposphere
+  private static double troposphereMax = 11000;
   private static double troposphereTemp = 288.15;
   private static double troposphereTempChange = -0.0065; //in K/m
 
-  private static int tropopauseMin = 11000; //Tropopause
-  private static int tropopauseMax = 20000;
+  private static double tropopauseMin = 11000; //Tropopause
+  private static double tropopauseMax = 20000;
   private static double tropopauseTemp = 216.65; //Double Check value
   private static double tropopauseTempChange = 0;
 
-  private static int lowStratosphereMin = 20000; //Lower Stratosphere
-  private static int lowStratosphereMax = 32000;
+  private static double lowStratosphereMin = 20000; //Lower Stratosphere
+  private static double lowStratosphereMax = 32000;
   private static double lowStratosphereTemp = 216.65; //Double Check value
   private static double lowStratosphereTempChange = 0.001;
 
-  private static int highStratosphereMin = 32000; //Higher Stratosphere
-  private static int highStratosphereMax = 47000;
+  private static double highStratosphereMin = 32000; //Higher Stratosphere
+  private static double highStratosphereMax = 47000;
   private static double highStratosphereTemp = 228.65; //Double Check value
   private static double highStratosphereTempChange = 0.0028;
 
-  private static int stratopauseMin = 47000; //Stratopause
-  private static int stratopauseMax = 51000;
+  private static double stratopauseMin = 47000; //Stratopause
+  private static double stratopauseMax = 51000;
   private static double stratopauseTemp = 270.65; //Double Check value
   private static double stratopauseTempChange = 0;
 
@@ -97,7 +98,7 @@ public class isa
   public double findPressureAlt(double alti)
   {
     double temp = findTempAlt(alti);
-    double gravity = 9.8;
+    double gravity = -9.8;
     double gradient = 0;
     double startAlt = 0;
     if (alti <= troposphereMax) //troposphere
@@ -127,10 +128,13 @@ public class isa
     {
       System.out.println("Invalid Altitude.");
     }
+    gradient = 1;
     if (gradient != 0)
     {
-      double gar = (-gravity) / (gradient * gasConstant) - 1;
-      return Math.pow((temp / seaLevelTemp), gar);
+      gradient = troposphereTempChange;
+      double gar = ((gravity) / (gradient * gasConstant) );//If testing works for 9144, change to use recursion to calculate pressures up to other levels.
+      double x = (temp / seaLevelTemp);
+      return seaLevelPressure * Math.pow(x, gar);
     }
     else
     {
