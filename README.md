@@ -1,5 +1,5 @@
 # Aero-Formula
-Solve aerospace/aeronautical formulas, mainly intended for Kerbal Space Program.
+Solve aerospace/aeronautical formulas, mainly intended for Kerbal Space Program and an edX course.
 
 ### List of classes in chronological order of creation:
 
