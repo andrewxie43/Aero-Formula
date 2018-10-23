@@ -57,7 +57,7 @@ public class isa
 
   }
 
-  public double findTempAlt(double alti)
+  public double findTempAlt(double alti) //Does not need recursion due to contants used. Eventually recusion should be implemented.
   {
     double gradient = troposphereTempChange;
     double startTemp = troposphereTemp;
