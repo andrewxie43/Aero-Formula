@@ -12,6 +12,9 @@ public class isa
   private int temp;
   private int alt;
 
+  //Misc constants
+  private static double gravity = -9.8;
+
   //Sea level/atmosphere constants
   private static double seaLevelDensity = 1.225;
   private static double seaLevelPressure = 101325;
@@ -98,7 +101,6 @@ public class isa
   public double findPressureAlt(double alti)
   {
     double temp = findTempAlt(alti);
-    double gravity = -9.8;
     double gradient = 0;
     double startAlt = troposphereMin;
     if (alti <= troposphereMax) //troposphere
@@ -122,7 +124,7 @@ public class isa
       gradient = 0;
       startAlt = tropopauseMin;
     }
-    else if (alti > highStratosphereMax && alti <= stratopauseMax)
+    else if (alti > highStratosphereMax && alti <= stratopauseMax) //stratopause
     {
       gradient = 0;
       startAlt = stratopauseMin;
