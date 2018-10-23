@@ -7,10 +7,10 @@ public class isa
   //density in kg/m^3, pressure in pa, temperature in k, distance in m
 
   //input parameters
-  private int density;
-  private int pressure;
-  private int temp;
-  private int alt;
+  //private int density;
+  //private int pressure;
+  //private int temp;
+  //private int alt;
 
   //Misc constants
   private static double gravity = -9.8;
@@ -31,7 +31,7 @@ public class isa
   private static double tropopauseMin = 11000; //Tropopause
   private static double tropopauseMax = 20000;
   private static double tropopauseTemp = 216.65; //Double Check value
-  private static double tropopauseTempChange = 0;
+
 
   private static double lowStratosphereMin = 20000; //Lower Stratosphere
   private static double lowStratosphereMax = 32000;
@@ -46,7 +46,7 @@ public class isa
   private static double stratopauseMin = 47000; //Stratopause
   private static double stratopauseMax = 51000;
   private static double stratopauseTemp = 270.65; //Double Check value
-  private static double stratopauseTempChange = 0;
+
 
 
 
