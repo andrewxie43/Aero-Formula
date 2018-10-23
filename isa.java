@@ -19,7 +19,7 @@ public class isa
   private static double gasConstant = 287;
 
 
-  //atmosphere layers
+  //atmosphere temperature layers
   private static double troposphereMin = 0; //Troposphere
   private static double troposphereMax = 11000;
   private static double troposphereTemp = 288.15;
@@ -100,22 +100,24 @@ public class isa
     double temp = findTempAlt(alti);
     double gravity = -9.8;
     double gradient = 0;
-    double startAlt = 0;
+    double startAlt = troposphereMin;
     if (alti <= troposphereMax) //troposphere
     {
       gradient = troposphereTempChange;
-      System.out.println("troposphere");
+      startAlt = troposphereMin;
     }
 
     else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
     {
       gradient = lowStratosphereTempChange;
+      startAlt = lowStratosphereMin;
     }
     else if (alti > lowStratosphereMax && alti <= highStratosphereMax) //high Strato
     {
       gradient = highStratosphereTempChange;
+      startAlt = highStratosphereMin;
     }
-    else if ((alti > troposphereMax && alti <=tropopauseMax)) //tropopause and stratopause
+    else if ((alti > troposphereMax && alti <=tropopauseMax)) //tropopause
     {
       gradient = 0;
       startAlt = tropopauseMin;

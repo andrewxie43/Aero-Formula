@@ -9,6 +9,8 @@ converter: unit conversions
 
 ### Planned formulas
 Lift/drag
+Longitudinal Static Stability
+Thrust
 
 ### Eventual Goals
 1. Port to android app
@@ -16,5 +18,5 @@ Lift/drag
 
 ### EXISTING PROBLEMS
 
-1. Findtemp and Findpressure only work for troposphere, need to use recursion for base values of other layers?
+1. Findpressure only work for troposphere, need to use recursion for base values of other layers?
 2. Find pressure returns answer that is slightly (~24) off, problem unknown.
