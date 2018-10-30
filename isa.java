@@ -57,6 +57,7 @@ public class isa
 
   }
 
+
   public double findTempAlt(double alti) //Does not need recursion due to contants used. Eventually recusion should be implemented.
   {
     double gradient = troposphereTempChange;
@@ -135,6 +136,7 @@ public class isa
     }
     if (gradient != 0)
     {
+
       double gar = ((gravity) / (gradient * gasConstant) );//If testing works for 9144, change to use recursion to calculate pressures up to other levels.
       double x = (temp / seaLevelTemp);
       return seaLevelPressure * Math.pow(x, gar);
