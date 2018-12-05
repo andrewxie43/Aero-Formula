@@ -57,6 +57,33 @@ public class isa
 
   }
 
+  public int findZone (double alti)
+  {
+    if (alti <= troposphereMax) //troposphere
+    {
+      return 1;
+    }
+    else if (alti > troposphereMax && alti <=tropopauseMax) //tropopause
+    {
+      return 2;
+    }
+    else if (alti > tropopauseMax && alti <= lowStratosphereMax) //low Strato
+    {
+      return 3;
+    }
+    else if (alti > lowStratosphereMax && alti <= highStratosphereMax) //high Strato
+    {
+      return 4;
+    }
+    else if (alti > highStratosphereMax && alti <= stratopauseMax) //stratopause
+    {
+      return 5;
+    }
+    else
+    {
+      return 0;
+    }
+  }
 
   public double findTempAlt(double alti) //Does not need recursion due to contants used. Eventually recusion should be implemented.
   {
@@ -150,7 +177,6 @@ public class isa
 
 
   }
-
 
 
 
