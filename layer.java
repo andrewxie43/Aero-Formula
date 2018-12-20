@@ -1,5 +1,5 @@
 public class layer{
-  
+
 double initAlt;
 double endAlt;
 double gradient;
@@ -18,11 +18,12 @@ double initDense;
     double startTemp;
     double temp;
 
-    if (initAlt != 0){
-
-
-    } else if (initAlt == 0){
+    if (initAlt == 0){ //if troposphere
       startTemp = 288.15;
+    }
+    else if (initAlt == 11000){
+      layer troposphere = new layer(0,11000,-0.0065);
+      startTemp = troposphere.findTempAlt(11000);
     }
 
 
