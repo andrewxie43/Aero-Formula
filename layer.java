@@ -12,8 +12,8 @@ public double initDense;
 
 public static double gravity = -9.80665;
 public static double seaLevelDensity = 1.225;
-public static double seaLevelPressure = 101325;
-public static double seaLevelTemp = 288.15;
+public static double seaLevelPressure = 101325; //10132500 or 101325?
+public static double seaLevelTemp = 288.16;
 public static double gasConstant = 287;
 
 //vars in methods
@@ -82,23 +82,15 @@ public double startAltTemp;
       gradient = -0.0028 ;
     }
 
-    else if(alti > 71000 && alti <= 84852){ //High mesosphere
+    else if(alti > 71000 && alti <= 80000){ //High mesosphere
       layer lowMesosphere = new layer(51000,71000,0.0028);
       startTemp = lowMesosphere.findTempAlt(32000);
       startAltTemp = 47000;
       P0 = lowMesosphere.findPressureAlt(47000);
       gradient = -0.002;
     }
-
-    else if(alti > 84852 && alti <=100000){ //Upper limit: Mesopause
-      layer highMesosphere = new layer(71000,84852,0.0028);
-      startTemp = highMesosphere.findTempAlt(71000);
-      startAltTemp = 47000;
-      P0 = highMesosphere.findPressureAlt(84852);
-      gradient = 0;
-    }
     else{
-      System.out.println("You have passed the Karman Line."); //REMEMBER TO UPDATE THIS WHEN A GUI IS ADDEDS
+      System.out.println("You have reached space, as defined by the USAF and NASA."); //REMEMBER TO UPDATE THIS WHEN A GUI IS ADDEDS
     }
   }
 
@@ -120,8 +112,7 @@ public double startAltTemp;
       double x = (provis.findTempAlt(alti) / startTemp);
       System.out.println(provis.findTempAlt(alti));
       System.out.println(startTemp); //ROUNDING PROBLEMS WITH findTempAlt DISCOVERED, MAKE OTHER VALUES MORE ACCURATE
-      //return (P0 * Math.pow(x, gar));
-      return 0.0;
+      return (P0 * Math.pow(x, gar));
     }
     else
     {
