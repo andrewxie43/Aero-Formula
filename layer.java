@@ -78,7 +78,7 @@ public double startAltTemp;
     else if(alti >= 51000){ //CURRENTLY ONLY GOES TO STRATOPAUSE
       layer stratopause = new layer(47000,51000,0);
       startTemp = stratopause.findTempAlt(47000);
-      startAlt = 51000;
+      startAltTemp = 51000;
       P0 = stratopause.findPressureAlt(51000);
       gradient = gradient ;//FIX WHEN MORE LAYERS ADDED
     }
@@ -103,8 +103,8 @@ public double startAltTemp;
     }
     else
     {//DOES NOT WORK
-      double grt = -(gravity/(gasConstant * provis.findTempAlt(alti))) * (alti - startAlt);
-      return Math.pow(Math.E, grt);
+      double grt = (-gravity/(gasConstant * provis.findTempAlt(alti))) * (alti - startAlt);
+      return P0 * Math.pow(Math.E, grt);
     }
 
 
