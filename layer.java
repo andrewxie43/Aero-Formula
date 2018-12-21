@@ -90,12 +90,15 @@ public double startAltTemp;
       gradient = -0.002;
     }
 
-    else if(alti > 84852){ //Upper limit: Mesopause
+    else if(alti > 84852 && alti <=90000){ //Upper limit: Mesopause
       layer highMesosphere = new layer(71000,84852,0.0028);
       startTemp = highMesosphere.findTempAlt(71000);
       startAltTemp = 47000;
       P0 = highMesosphere.findPressureAlt(84852);
       gradient = 0;
+    }
+    else{
+      System.out.println("Value likely exceeded maximum Altitude, you are now in the Thermosphere, essentially space."); //REMEMBER TO UPDATE THIS WHEN A GUI IS ADDEDS
     }
   }
 
