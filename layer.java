@@ -99,7 +99,10 @@ public double startAltTemp;
     {
       double gar = ((gravity) / (gradient * gasConstant));
       double x = (provis.findTempAlt(alti) / startTemp);
-      return (P0 * Math.pow(x, gar));
+      System.out.println(provis.findTempAlt(alti));
+      System.out.println(startTemp); //ROUNDING PROBLEMS WITH findTempAlt DISCOVERED, MAKE OTHER VALUES MORE ACCURATE
+      //return (P0 * Math.pow(x, gar));
+      return 0.0;
     }
     else
     {
