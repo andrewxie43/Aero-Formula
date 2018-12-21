@@ -23,7 +23,8 @@ public double startAlt = 0;
 public double tempAlt = 0;
 public double P0 = 0;
 public double startAltTemp;
-//constructors
+
+ //constructors
   public layer (double ea){ //for temporary layers
     initAlt = 0;
     endAlt = ea;
@@ -84,9 +85,9 @@ public double startAltTemp;
 
     else if(alti > 71000 && alti <= 80000){ //High mesosphere
       layer lowMesosphere = new layer(51000,71000,0.0028);
-      startTemp = lowMesosphere.findTempAlt(32000);
+      startTemp = lowMesosphere.findTempAlt(51000);
       startAltTemp = 47000;
-      P0 = lowMesosphere.findPressureAlt(47000);
+      P0 = lowMesosphere.findPressureAlt(71000);
       gradient = -0.002;
     }
     else{
@@ -110,9 +111,7 @@ public double startAltTemp;
     {
       double gar = ((gravity) / (gradient * gasConstant));
       double x = (provis.findTempAlt(alti) / startTemp);
-      System.out.println(provis.findTempAlt(alti));
-      System.out.println(startTemp); //ROUNDING PROBLEMS WITH findTempAlt DISCOVERED, MAKE OTHER VALUES MORE ACCURATE
-      return (P0 * Math.pow(x, gar));
+      return (P0 * Math.pow(x,gar));
     }
     else
     {
