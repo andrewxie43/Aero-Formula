@@ -22,3 +22,8 @@ Thrust
 ### Bugs
 
 1. Findpressure only work for troposphere, need to use recursion for base values of other layers?
+  This may be fixed with layer.java, has not been tested yet.
+  
+### Misc. Notes
+
+1. isa.java has been replaced with layer.java, and will not be updated anymore.
