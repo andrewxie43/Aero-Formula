@@ -9,7 +9,7 @@ public double initDense;
 //constants
 public static double gravity = -9.80665;
 public static double seaLevelDensity = 1.225;
-public static double seaLevelPressure = 101325; 
+public static double seaLevelPressure = 101325;
 public static double seaLevelTemp = 288.16;
 public static double gasConstant = 287;
 
@@ -87,8 +87,11 @@ public double startAltProvis;
       P0 = lowMesosphere.findPressureAlt(71000);
       gradient = -0.002;
     }
-    else{
+    else if (alti >= 80000 && alti <100000){
       System.out.println("You have reached space, as defined by the USAF and NASA."); //REMEMBER TO UPDATE THIS WHEN A GUI IS ADDEDS
+    }
+    else{
+      System.out.println("You have reached space, as defined by the Karman line.");
     }
   }
 
