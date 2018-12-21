@@ -40,7 +40,6 @@ public double startAltTemp;
 
  //recursive variable initiation
   public void setVars(double alti){
-    P0 = 0;
     if (alti > 0 && alti <= 11000){
       startTemp = 288.15;
       gradient = -0.0065;
@@ -75,7 +74,7 @@ public double startAltTemp;
       P0 = highStratosphere.findPressureAlt(47000);
       gradient = 0;
     }
-    else if(alti >= 51000){ //CURRENTLY ONLY GOES TO STRATOPAUSE
+    else if(alti > 51000){ //CURRENTLY ONLY GOES TO STRATOPAUSE
       layer stratopause = new layer(47000,51000,0);
       startTemp = stratopause.findTempAlt(47000);
       startAltTemp = 51000;
@@ -95,16 +94,16 @@ public double startAltTemp;
   {
     setVars(alti);
     layer provis = new layer(alti);
+
     if (gradient != 0)
     {
       double gar = ((gravity) / (gradient * gasConstant));
       double x = (provis.findTempAlt(alti) / startTemp);
-      return  P0 * Math.pow(x, gar);
+      return (P0 * Math.pow(x, gar));
     }
     else
-    {//DOES NOT WORK
-      double grt = ((gravity)/(gasConstant * provis.findTempAlt(alti))) * (alti - startAlt);
-      return P0 * Math.pow(Math.E, grt);
+    {
+      return (P0 * Math.pow(Math.E,(gravity/(gasConstant*provis.findTempAlt(alti)))*(alti - startAltTemp)));
     }
 
 
