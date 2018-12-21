@@ -5,12 +5,8 @@ public class main
 {
   public static void main(String[]args)
   {
-    isa w = new isa();
     layer q = new layer(0,10000);
-    System.out.println(w.findTempAlt(2400));
     System.out.println(q.findTempAlt(2400));
-
-    System.out.println(w.findPressureAlt(2400));
     System.out.println(q.findPressureAlt(2400));
 
     //9144m = 30082.8 Pa, 228.714 K
