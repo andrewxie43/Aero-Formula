@@ -97,13 +97,13 @@ public double startAltTemp;
     layer provis = new layer(alti);
     if (gradient != 0)
     {
-      double gar = ((gravity) / (gradient * gasConstant) );
+      double gar = ((gravity) / (gradient * gasConstant));
       double x = (provis.findTempAlt(alti) / startTemp);
       return  P0 * Math.pow(x, gar);
     }
     else
     {//DOES NOT WORK
-      double grt = (-gravity/(gasConstant * provis.findTempAlt(alti))) * (alti - startAlt);
+      double grt = ((gravity)/(gasConstant * provis.findTempAlt(alti))) * (alti - startAlt);
       return P0 * Math.pow(Math.E, grt);
     }
 
