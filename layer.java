@@ -55,7 +55,7 @@ public double startAltTemp;
     }
     else if(alti > 20000 && alti <= 32000){
       layer tropopause = new layer(11000,20000,0);
-      startTemp = tropopause.findTempAlt(200000);
+      startTemp = tropopause.findTempAlt(20000);
       startAltTemp = 20000;
       P0 = tropopause.findPressureAlt(20000);
       gradient = 0.001;
@@ -105,9 +105,6 @@ public double startAltTemp;
     {
       return (P0 * Math.pow(Math.E,(gravity/(gasConstant*provis.findTempAlt(alti)))*(alti - startAltTemp)));
     }
-
-
-
   }
 
 }
