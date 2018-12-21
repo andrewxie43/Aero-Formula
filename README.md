@@ -3,8 +3,9 @@ Solve aerospace/aeronautical formulas, mainly intended for Kerbal Space Program 
 
 ### List of classes in chronological order of creation:
 
-isa: Calculations for the international standard atmosphere.
-converter: unit conversions
+isa: Calculations for the international standard atmosphere. REPLACED WITH LAYER
+layer:Calculations for the international standard atmosphere, replaced isa
+
 
 
 ### Planned formulas
