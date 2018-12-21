@@ -104,6 +104,7 @@ public double P0 = 0;
     else
     {//DOES NOT WORK
       double grt = -(gravity/(gasConstant * provis.findTempAlt(alti))) * (alti - startAlt);
+      System.out.println(grt);
       return Math.pow(Math.E, grt);
     }
 
