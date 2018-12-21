@@ -9,7 +9,7 @@ public double initDense;
 //constants
 public static double gravity = -9.80665;
 public static double seaLevelDensity = 1.225;
-public static double seaLevelPressure = 101325; //10132500 or 101325?
+public static double seaLevelPressure = 101325; 
 public static double seaLevelTemp = 288.16;
 public static double gasConstant = 287;
 
