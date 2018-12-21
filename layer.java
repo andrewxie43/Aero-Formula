@@ -52,30 +52,35 @@ public double P0 = 0;
       startAlt = 11000;
       endAlt = 11000;
       P0 = troposphere.findPressureAlt(11000);
+      gradient = 0;
     }
     else if(alti > 20000 && alti <= 32000){
       layer tropopause = new layer(11000,20000,0);
       startTemp = tropopause.findTempAlt(200000);
       startAlt = 20000;
       P0 = tropopause.findPressureAlt(20000);
+      gradient = 0.001;
     }
     else if(alti > 32000 && alti <= 47000){
       layer lowStratosphere = new layer(20000,32000,0.001);
       startTemp = lowStratosphere.findTempAlt(32000);
       startAlt = 32000;
       P0 = lowStratosphere.findPressureAlt(32000);
+      gradient = 0.0028;
     }
     else if(alti > 47000 && alti <= 51000){
       layer highStratosphere = new layer(32000,47000,0.0028);
       startTemp = highStratosphere.findTempAlt(47000);
       startAlt = 47000;
       P0 = highStratosphere.findPressureAlt(47000);
+      gradient = 0;
     }
     else if(alti >= 51000){ //CURRENTLY ONLY GOES TO STRATOPAUSE
       layer stratopause = new layer(47000,51000,0);
       startTemp = stratopause.findTempAlt(47000);
       startAlt = 51000;
       P0 = stratopause.findPressureAlt(51000);
+      gradient = gradient ;//FIX WHEN MORE LAYERS ADDED
     }
   }
 
@@ -97,8 +102,8 @@ public double P0 = 0;
       return  P0 * Math.pow(x, gar);
     }
     else
-    {
-      double grt = (-gravity/(gasConstant * temp)) * (alti - startAlt);
+    {//DOES NOT WORK
+      double grt = -(gravity/(gasConstant * provis.findTempAlt(alti))) * (alti - startAlt);
       return Math.pow(Math.E, grt);
     }
 
