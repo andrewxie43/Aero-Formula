@@ -37,7 +37,8 @@ public double startAltProvis;
   }
 
  //recursive variable initiation
-  public void setVars(double alti){
+  public void setVars(double alti)
+  {
     if (alti > 0 && alti <= 11000){ //Troposphere
       startTemp = 288.15;
       gradient = -0.0065;
@@ -52,7 +53,7 @@ public double startAltProvis;
       gradient = 0;
     }
     else if(alti > 20000 && alti <= 32000){ //Low Stratosphere //
-      layer tropopause = new layer(11000,20000,0); //Pressure becomes inaccurate at this layer
+      layer tropopause = new layer(11000,20000,0); //Pressure becomes inaccurate at this layer, due to gravity rounding?
       startTemp = tropopause.findTempAlt(20000);
       startAltProvis = 20000;
       P0 = tropopause.findPressureAlt(20000);
@@ -88,7 +89,7 @@ public double startAltProvis;
       gradient = -0.002;
     }
     else if (alti >= 80000 && alti <100000){
-      System.out.println("You have reached space, as defined by the USAF and NASA."); //REMEMBER TO UPDATE THIS WHEN A GUI IS ADDEDS
+      System.out.println("You have reached space, as defined by the USAF and NASA."); //REMEMBER TO UPDATE THIS WHEN A GUI IS ADDED
     }
     else{
       System.out.println("You have reached space, as defined by the Karman line.");
@@ -119,6 +120,16 @@ public double startAltProvis;
     }
   }
 
-  //NEXT: Pressure, inverses
 
+
+  //NEXT: Density
+
+
+
+  public double findAltTemp(double doubleTemp){
+
+    double alti = ((temp - startTemp)/gradient) + initAlt; 
+
+    return alti;
+  }
 }

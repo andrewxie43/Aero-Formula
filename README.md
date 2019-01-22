@@ -4,7 +4,7 @@ Solve aerospace/aeronautical formulas, mainly intended for Kerbal Space Program 
 ### List of classes in chronological order of creation:
 
 1.isa: Calculations for the international standard atmosphere. REPLACED WITH LAYER <br />
-2.layer:Calculations for the international standard atmosphere, replaced isa <br />
+2.layer:Calculations for the international standard atmosphere, replaced isa.<br />
 
 
 
@@ -24,7 +24,7 @@ Thrust <br />
 
 1. Findpressure only work for troposphere, need to use recursion for base values of other layers?
   This may be fixed with layer.java, has not been tested yet. <br />
-  
+
 ### Misc. Notes
 
 1. isa.java has been replaced with layer.java, and will not be updated anymore. <br />
