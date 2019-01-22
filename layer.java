@@ -13,13 +13,16 @@ public static double seaLevelPressure = 101325;
 public static double seaLevelTemp = 288.16;
 public static double gasConstant = 287;
 
-//vars in methods
+//vars in normal methods
 public double startTemp = 0;
 public double temp = 0;
 public double startAlt = 0;
 public double tempAlt = 0;
 public double P0 = 0;
 public double startAltProvis;
+
+//vars in inverse
+public double endTemp = 0;
 
  //constructors
   public layer (double ea){ //for temporary layers
@@ -36,8 +39,8 @@ public double startAltProvis;
     gradient = g;
   }
 
- //recursive variable initiation
-  public void setVars(double alti)
+ //recursive variable initiation given alti
+  public void setVarsAlt(double alti)
   {
     if (alti > 0 && alti <= 11000){ //Troposphere
       startTemp = 288.15;
@@ -95,17 +98,58 @@ public double startAltProvis;
       System.out.println("You have reached space, as defined by the Karman line.");
     }
   }
+  public void setVarsTemp(double temp) //REWRITE TO ACCOUNT FOR EQUAL TEMPS AT DIFFERENT ALTS
+  {
+    layer troposphere = new layer(0,11000,-0.0065);
+    layer tropopause = new layer(11000,20000,0);
+    layer lowStratosphere = new layer(20000,32000,0.001);
+    layer highStratosphere = new layer(32000,47000,0.0028);
+    layer stratopause = new layer(47000,51000,0);
+    layer lowMesosphere = new layer(51000,71000,0.0028);
+    layer highMesosphere = new layer(71000,80000,-0.002);
+
+    if (temp <= 15){
+      System.out.println("Less than standard sea level temp");
+    } else if (temp >= troposphere.startTemp && temp < tropopause.startTemp){
+      startTemp = troposphere.startTemp;
+      //endTemp = tropopause.startTemp;
+    } else if (temp >= tropopause.startTemp && temp < lowStratosphere.startTemp){
+      startTemp = tropopause.startTemp;
+      //endTemp = lowStratosphere.startTemp;
+    } else if (temp >= lowStratosphere.startTemp && temp < highStratosphere.startTemp){
+      startTemp = lowStratosphere.startTemp;
+      //endTemp = highStratosphere.startTemp;
+    } else if (temp >= highStratosphere.startTemp && temp < stratopause.startTemp){
+      startTemp = highStratosphere.startTemp;
+      //endTemp = stratopause.startTemp;
+    } else if (temp >= stratopause.startTemp && temp < lowMesosphere.startTemp){
+      startTemp = stratopause.startTemp;
+      //endTemp = lowMesosphere.startTemp;
+    } else if (temp >= lowMesosphere.startTemp && temp < highMesosphere.startTemp){
+      startTemp = lowMesosphere.startTemp;
+      //endTemp = highMesosphere.startTemp;
+    } else if (temp >= lowMesosphere.startTemp && temp < highMesosphere.startTemp){
+      startTemp = lowMesosphere.startTemp;
+      //endTemp = highMesosphere.startTemp;
+    } else {
+      System.out.println("ERROR: No U");
+    }
+
+
+
+
+  }
 
   public double findTempAlt(double alti)
   {
-    setVars(alti);
+    setVarsAlt(alti);
     temp = startTemp + (gradient * (alti - initAlt));
     return temp;
   }
 
   public double findPressureAlt(double alti)
   {
-    setVars(alti);
+    setVarsAlt(alti);
     layer provis = new layer(alti);
 
     if (gradient != 0)
@@ -126,9 +170,12 @@ public double startAltProvis;
 
 
 
-  public double findAltTemp(double doubleTemp){
+  public double findAltTemp(double doubleTemp, String layer){
 
-    double alti = ((temp - startTemp)/gradient) + initAlt; 
+    //setVarsTemp(temp);
+    layer.toUpperCase(); //Match input layer to a setup layer, and adjust starttemp and gradient accordingly...
+
+    double alti = ((temp - startTemp)/gradient) + initAlt;
 
     return alti;
   }
