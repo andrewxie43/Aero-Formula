@@ -19,7 +19,7 @@ public class main
     //System.out.println("EXPECTED Pressure at 9144: 30082.8\n");
 
 
-    System.out.println("Pressure at 25,000: " + q.findPressureAlt(25000));
+    System.out.println(q.findTempAlt(32000));
     //9144m = 30082.8 Pa, 228.714 K
     //2400m, 75614.2 Pa, 272.55 K
     //9144 m = .4583 kg/m3
